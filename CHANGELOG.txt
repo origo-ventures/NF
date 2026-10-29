@@ -1,0 +1,37 @@
+NICE FASHION website - version history
+
+v6.1 (2026-10-29)  SECURITY UPDATE. Design, products, prices, settings and the control-panel workflow are unchanged. Your data files (config.js, data/*.js) are NOT changed.
+                   Control panel: data files are now read as plain data (the old loader executed them as code); data is checked before it is loaded, restored from a backup or published;
+                   the GitHub token is kept in memory only unless you tick "Remember on this device" (no more silent session storage); clearer network / permission / conflict messages;
+                   login fields checked; Content-Security-Policy limits the panel to talk only to api.github.com.
+                   Website: stronger text escaping, product ids / image paths / links checked before use, unsafe links (javascript:) ignored, external links use noopener noreferrer,
+                   Content-Security-Policy and Referrer-Policy added to every page.
+                   Order sheet (Orders-Code.gs): every request is validated, spreadsheet-formula injection blocked in all text columns, totals marked NOT VERIFIED (optional subtotal check),
+                   per-phone and global flood limits, safer errors. ACTION NEEDED: paste the new Orders-Code.gs into Apps Script and deploy a NEW VERSION (see docs).
+                   Details: NiceFashion-6.1-Reports.md
+
+v6.0 (2026-10-23)  Checkout fix: total no longer shows NaN (missing delivery charge is treated as 0). Delivery ON/OFF switch (OFF = no address, no area, no delivery charge, pickup from showroom).
+                   Payment methods can be turned on/off one by one: Cash (at showroom or on delivery), bKash, Nagad, Bangla QR. Clear labels on every select box. Placeholder QR photos are no longer shown to customers
+                   (turn on "Show QR photo" only after uploading your real photo). Floating WhatsApp button hidden on the checkout page.
+                   Control panel: Save draft (kept on this device) and Review & Publish are now separate. The review list shows every change with tick boxes (photos, products, settings, coupons...);
+                   untick anything you do not want to publish now and it stays in your draft. After publishing a list with check marks shows what went live.
+v5.1 (2026-10-21)  Control panel fix: the v5.0 admin.html did not open (a script-closing tag inside the page-builder code ended the script early). Fixed; the panel now shows a red message if anything fails while loading.
+                   Website files are unchanged from v5.0. Tested in headless Chromium with a mocked GitHub API.
+v5.0 (2026-10-21)  Festival page (EID EXCLUSIVE): scheduled publish / auto-unpublish, content and photos from the panel; offer timer (per visitor hours or fixed end);
+                   coupons with price discount (generate in panel); WhatsApp order/availability messages include product photo links; clickable popup (delay, how often);
+                   Publish / Unpublish buttons for products, categories, pages; size guide; fabric & care; Complete the look; per-product pages (p/<id>.html) with share
+                   previews + Share button; sitemap, robots, 404, policy page; Facebook Pixel / Google Analytics (optional); order sheet (Google Apps Script);
+                   Texts tab (labels) and logo upload; gallery count fix; "View site" link fixed (icelake-adm.github.io/NiceFashion); data/store.js added.
+v4.1 (2026-10-20)  Control panel: existing photos now load through the GitHub API with your token (previews work from any place).
+v4.0 (2026-10-19)  Payment update: Online Selling & Payment ON/OFF (Dashboard + Payment section). OFF = WhatsApp only. ON = checkout.html with
+                   bKash QR + bKash number + payment link, Bangla QR, optional Nagad / Cash on Delivery, optional TrxID. Backup tool (download / restore,
+                   auto-backup before Save). Cart modal only lists items; form moved to checkout.html.
+v3.0 (2026-10-13)  Control panel redesigned like the Origo panel (Dashboard, row cards, Up/Down/Delete, Save & Publish bar), product reorder, in-panel Manual.
+v2.2 (2026-10-10)  Publish = one GitHub commit, repository size meter, large photo warning.
+v2.1 (2026-10-09)  Online Selling switch, availability forms, About details (founder, addresses, hours), Google Map, open-now badge.
+v2.0 (2026-10-08)  GitHub control panel v1: products, categories, pages (publish/unpublish, new pages), settings, site photos.
+v1.2               Mobile menu, black premium theme, Montserrat font, showroom section.
+v1.1               Checkout with name/phone/address and WhatsApp order, discounts, search, popup.
+v1.0               First static site: categories, product photos, WhatsApp order.
+
+File naming: Nice-Fashion-Website-<version>-full.zip (whole project) and ...-update-code-only.zip (only changed code files; never contains config.js or data files).
